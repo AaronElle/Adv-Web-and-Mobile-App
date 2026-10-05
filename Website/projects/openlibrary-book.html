@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Individual Project Milestone 1 - Open Library Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+:root{--green:#4b5e44;--cream:#fcfbf7;--tan:#c8b99a;--card:#fffdf8;--border:#d9ddd4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--green);font-family:Verdana,sans-serif}
+a{color:var(--green);text-decoration:none;position:relative}
+a:hover{text-decoration:underline}
+.page{max-width:1100px;margin:0 auto;padding:35px 20px 70px}
+nav{text-align:center;margin-bottom:28px}
+nav a{margin:0 12px}
+h1,h2{font-family:"Lobster",sans-serif;text-align:center}
+h1{font-size:56px;margin:15px 0 8px}
+h2{font-size:34px;margin:10px 0 28px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.label{font-weight:bold}
+.button{display:inline-block;background:var(--green);color:#fff;padding:10px 16px;border-radius:20px;margin:5px}
+.button:hover{color:#fff;background:#585e44;text-decoration:none}
+.notice{background:#f1eee5;border-radius:12px;padding:15px;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.cover{display:block;width:220px;max-height:330px;object-fit:contain;margin:0 auto 18px;border-radius:8px}
+.meta{display:grid;grid-template-columns:170px 1fr;gap:9px 15px}
+.meta div{padding:5px 0}
+.list{padding-left:20px;line-height:1.7}
+footer{text-align:center;padding:30px 20px 60px;background:var(--tan);color:var(--green)}
+@media(max-width:600px){h1{font-size:42px}.meta{grid-template-columns:1fr}.page{padding:20px 12px 50px}}
+
+.book-layout{display:grid;grid-template-columns:260px 1fr;gap:30px;align-items:start}
+@media(max-width:700px){.book-layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+<nav><a href="../index.html">Home</a><a href="../labs.html">Labs</a><a href="project-milestone-1.html">Milestone 1</a><a href="openlibrary-search.html">Search Results</a></nav>
+<h1>Open Library Book</h1><h2>Individual Project Milestone 1</h2>
+<div id="status" class="notice">Loading book information...</div>
+<div id="book" class="card"></div>
+</div>
+<footer>IT 4403 – Advanced Web and Mobile Applications</footer>
+<script>
+$(document).ready(function(){
+  $.getJSON("openlibrary-book.json")
+   .done(function(data){
+      var cover = data.covers && data.covers.length && data.covers[0] > 0
+        ? '<img class="cover" src="https://covers.openlibrary.org/b/id/'+data.covers[0]+'-L.jpg" alt="Cover of '+escapeHtml(data.title || 'book')+'">'
+        : '<div class="notice">Cover image not available.</div>';
+      var authors=(data.authors||[]).map(function(a){return '<a href="https://openlibrary.org'+a.key+'" target="_blank" rel="noopener">'+escapeHtml(a.key.replace('/authors/','Author '))+'</a>';}).join(', ')||'Not available';
+      var publishers=(data.publishers||[]).map(escapeHtml).join(', ')||'Not available';
+      var isbn10=(data.isbn_10||[]).map(escapeHtml).join(', ')||'Not available';
+      var isbn13=(data.isbn_13||[]).map(escapeHtml).join(', ')||'Not available';
+      var first=data.first_sentence && data.first_sentence.value ? escapeHtml(data.first_sentence.value) : 'Not available';
+      var work=data.works && data.works[0] ? '<a href="https://openlibrary.org'+data.works[0].key+'" target="_blank" rel="noopener">Open Library work record</a>' : 'Not available';
+      var source='<a href="https://openlibrary.org/books/'+data.key.split('/').pop()+'.json" target="_blank" rel="noopener">Open Library edition JSON</a>';
+      $('#book').html('<div class="book-layout">'+cover+'<div><h2>'+escapeHtml(data.title||'Untitled')+'</h2><div class="meta">'+
+        '<div class="label">Publisher</div><div>'+publishers+'</div>'+
+        '<div class="label">Publication date</div><div>'+escapeHtml(data.publish_date||'Not available')+'</div>'+
+        '<div class="label">Page count</div><div>'+escapeHtml(String(data.number_of_pages||'Not available'))+'</div>'+
+        '<div class="label">ISBN-10</div><div>'+isbn10+'</div>'+
+        '<div class="label">ISBN-13</div><div>'+isbn13+'</div>'+
+        '<div class="label">Author record</div><div>'+authors+'</div>'+
+        '<div class="label">First sentence</div><div>'+first+'</div>'+
+        '<div class="label">Edition key</div><div>'+escapeHtml(data.key||'Not available')+'</div>'+
+        '<div class="label">Work</div><div>'+work+'</div></div><p>'+source+'</p></div></div>');
+      $('#status').text('Book JSON loaded successfully.');
+   })
+   .fail(function(){$('#status').text('The book JSON file could not be loaded.');});
+});
+function escapeHtml(value){return $('<div>').text(value).html();}
+</script>
+</body></html>

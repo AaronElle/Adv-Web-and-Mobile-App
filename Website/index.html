@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="styles.css">
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adv Web Dev</title>
+</head>
+<body>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Menu</button>
+            <div id="myDropdown" class="dropdown-content">
+
+                    <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
+
+                    <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
+
+                    <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
+
+                    <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
+
+            </div>
+    </div>
+
+    <h1 class="heading">Adv Web Dev</h1>
+    <div class="heading" style="text-align: center; margin-top: -40px; font-size: 30px;">Aaron Elle Section W01</div>
+
+    <ul class="thing">
+        <div class="directory" >
+            <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
+        </div>
+
+        <div class="directory">
+            <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
+        </div>
+
+        <div class="directory">
+            <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
+        </div>
+
+        <div class="directory">
+            <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
+        </div>
+
+    </ul>
+
+    <img class="puta" src="puta.png">
+
+
+
+    <div
+            style="
+    padding: 50px 0;
+"
+    >
+    </div>
+    <footer>
+        <p>This is a student website created for course projects in IT 4403</p>
+        <p>IT 4403 – Advanced Web and Mobile Applications</p>
+        <a href="https://campus.kennesaw.edu/colleges-departments/ccse/academics/information-technology/">CCSE Department of IT</a>
+    </footer>
+
+    <! button script>
+    <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

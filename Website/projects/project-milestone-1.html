@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Individual Project Milestone 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<style>
+:root{--green:#4b5e44;--cream:#fcfbf7;--tan:#c8b99a;--card:#fffdf8;--border:#d9ddd4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--green);font-family:Verdana,sans-serif}
+a{color:var(--green);text-decoration:none;position:relative}
+a:hover{text-decoration:underline}
+.page{max-width:1100px;margin:0 auto;padding:35px 20px 70px}
+nav{text-align:center;margin-bottom:28px}
+nav a{margin:0 12px}
+h1,h2{font-family:"Lobster",sans-serif;text-align:center}
+h1{font-size:56px;margin:15px 0 8px}
+h2{font-size:34px;margin:10px 0 28px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.label{font-weight:bold}
+.button{display:inline-block;background:var(--green);color:#fff;padding:10px 16px;border-radius:20px;margin:5px}
+.button:hover{color:#fff;background:#585e44;text-decoration:none}
+.notice{background:#f1eee5;border-radius:12px;padding:15px;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.cover{display:block;width:220px;max-height:330px;object-fit:contain;margin:0 auto 18px;border-radius:8px}
+.meta{display:grid;grid-template-columns:170px 1fr;gap:9px 15px}
+.meta div{padding:5px 0}
+.list{padding-left:20px;line-height:1.7}
+footer{text-align:center;padding:30px 20px 60px;background:var(--tan);color:var(--green)}
+@media(max-width:600px){h1{font-size:42px}.meta{grid-template-columns:1fr}.page{padding:20px 12px 50px}}
+</style></head>
+<body><div class="page">
+<nav><a href="../index.html">Home</a><a href="../labs.html">Labs</a></nav>
+<h1>Individual Project Milestone 1</h1><h2>Open Library JSON</h2>
+<div class="card"><p>This milestone reads two saved Open Library JSON files with JavaScript and jQuery and displays the data in organized webpages.</p>
+<div class="grid">
+<div class="card"><h2>Single Book</h2><p>Displays the Fantastic Mr. Fox edition record, including publication details, ISBNs, author reference, cover, first sentence, and Open Library links.</p><p><a class="button" href="openlibrary-book.html">View Single-Book Page</a></p></div>
+<div class="card"><h2>Search Results</h2><p>Loops through the saved <code>docs</code> array from the “modern web” search and displays available information for each result.</p><p><a class="button" href="openlibrary-search.html">View Search Results</a></p></div>
+</div></div>
+<div class="card"><h2>JSON Files</h2><ul class="list"><li><a href="openlibrary-book.json">openlibrary-book.json</a></li><li><a href="openlibrary-search.json">openlibrary-search.json</a></li></ul></div>
+</div><footer>IT 4403 – Advanced Web and Mobile Applications</footer></body></html>

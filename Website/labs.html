@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="styles.css">
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Lobster&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lauren and Aaron</title>
+</head>
+<body>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Menu</button>
+    <div id="myDropdown" class="dropdown-content">
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
+
+    </div>
+</div>
+
+
+
+<h1 class="heading">Labs</h1>
+
+<ul class="thing">
+    <div class="directory" >
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
+    </div>
+
+    <div class="directory">
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
+    </div>
+
+    <div class="directory">
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
+    </div>
+
+    <div class="directory">
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
+    </div>
+</ul>
+
+<div class="lab2-spacer-image">
+    <img class="spacer" src="spacer.png">
+</div>
+
+<div class="lab2-wrap">
+    <h2>Lab 2: jQuery</h2>
+    <p class="lab2-description">Completed jQuery practice exercises and applications.</p>
+    <div class="lab2-card">
+        <h3>Exercises</h3>
+        <ol class="lab2-list">
+            <li><a href="lab2/lab2-exercise1.html">Exercise 1: JavaScript and jQuery Comparison</a></li>
+            <li><a href="lab2/lab2-exercise2.html">Exercise 2: jQuery ready() and Event Handling</a></li>
+            <li><a href="lab2/lab2-exercise3.html">Exercise 3: jQuery Selectors, DOM, and CSS</a></li>
+            <li><a href="lab2/lab2-exercise4.html">Exercise 4: Table Selection and Event Handling</a></li>
+            <li><a href="lab2/lab2-exercise5.html">Exercise 5: jQuery Visual Effects</a></li>
+            <li><a href="lab2/lab2-exercise6.html">Exercise 6: jQuery Calculator Application</a></li>
+            <li><a href="lab2/lab2-exercise7.html">Exercise 7: Picture Browser Application</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="lab2-spacer"></div>
+
+<div class="lab2-wrap">
+    <h2>Lab 3: JSON</h2>
+    <p class="lab2-description">JSON structure, validation, JavaScript/jQuery data access, and JSON file processing.</p>
+    <div class="lab2-card">
+        <h3>Exercises</h3>
+        <ol class="lab2-list">
+            <li><a href="lab3/lab3-exercise1.html">Exercise 1: JSON Structure Exploration</a></li>
+            <li><a href="lab3/lab3-exercise2.html">Exercise 2: Create and Validate JSON</a></li>
+            <li><a href="lab3/lab3-exercise3.html">Exercise 3: Read JSON Values</a></li>
+            <li><a href="lab3/lab3-exercise4.html">Exercise 4: Nested JSON Data</a></li>
+            <li><a href="lab3/lab3-exercise5.html">Exercise 5: Weather JSON</a></li>
+            <li><a href="lab3/lab3-exercise6.html">Exercise 6: Movie Information Page</a></li>
+        </ol>
+    </div>
+</div>
+
+<! button script>
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

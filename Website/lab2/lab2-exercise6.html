@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 6 | Lab 2: jQuery</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Lobster&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+<div id="myDropdown" class="dropdown-content">
+<a href="../index.html">Home</a><a href="../exercises.html">Exercises</a><a href="../labs.html">Labs</a><a href="../projects.html">Projects</a>
+</div></div>
+<h1 class="heading">Lab 2: jQuery</h1>
+<div class="lab2-wrap">
+<div class="lab2-nav"><a href="../labs.html">← Back to Labs</a></div>
+<h2>Exercise 6: jQuery Calculator Application</h2>
+
+<div class="lab2-card">
+<p>Enter two numbers, choose an operation, and select a color for the result.</p>
+<input class="lab2-input" type="text" id="num1" placeholder="First number">
+<select class="lab2-select" id="operation">
+<option value="+">Addition (+)</option><option value="-">Subtraction (-)</option><option value="*">Multiplication (*)</option><option value="/">Division (/)</option>
+</select>
+<input class="lab2-input" type="text" id="num2" placeholder="Second number">
+<br>
+<input class="lab2-input" type="text" id="resultColor" placeholder="Result color, e.g. blue">
+<button class="lab2-btn" id="calculate">Calculate</button>
+<div id="calcResult" class="result">Your result will appear here.</div>
+</div>
+<script>
+$(document).ready(function(){
+ $("#calculate").click(function(){
+   const aText=$("#num1").val().trim(), bText=$("#num2").val().trim(), op=$("#operation").val(), color=$("#resultColor").val().trim();
+   if(aText==="" || bText===""){ $("#calcResult").attr("class","result error").text("Error: both number fields are required."); return; }
+   const a=Number(aText), b=Number(bText);
+   if(!Number.isFinite(a) || !Number.isFinite(b)){ $("#calcResult").attr("class","result error").text("Error: both entries must be valid numbers."); return; }
+   if(op==="/" && b===0){ $("#calcResult").attr("class","result error").text("Error: division by zero is not allowed."); return; }
+   let result;
+   if(op==="+") result=a+b; else if(op==="-") result=a-b; else if(op==="*") result=a*b; else result=a/b;
+   $("#calcResult").attr("class","result success").text("Result: "+result);
+   if(color==="") $("#calcResult").css("color","");
+   else $("#calcResult").css("color",color);
+ });
+});
+</script>
+
+</div>
+<footer><p>This is a student website created for course projects in IT 4403</p><p>IT 4403 – Advanced Web and Mobile Applications</p><a href="https://campus.kennesaw.edu/colleges-departments/ccse/academics/information-technology/">CCSE Department of IT</a></footer>
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    document.querySelectorAll('.dropdown-content').forEach(function(d){d.classList.remove('show');});
+  }
+}
+</script>
+</body></html>

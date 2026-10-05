@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="styles.css">
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Lobster&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lauren and Aaron</title>
+</head>
+<body>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Menu</button>
+    <div id="myDropdown" class="dropdown-content">
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
+
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
+
+    </div>
+</div>
+
+
+
+<h1 class="heading">Exercises</h1>
+
+<ul class="thing">
+    <div class="directory" >
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
+    </div>
+
+    <div class="directory">
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
+    </div>
+
+    <div class="directory">
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
+    </div>
+
+    <div class="directory">
+        <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
+    </div>
+</ul>
+
+<div style="text-align: center;">
+    <img class="spacer" src="spacer.png">
+</div>
+
+<div style="padding:0px;"><h2 class="wed">Exercises</h2></div>
+
+<div style="padding: 80px 0"></div>
+
+<div
+        style="
+    padding: 50px 0;
+"
+>
+</div>
+
+<! button script>
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

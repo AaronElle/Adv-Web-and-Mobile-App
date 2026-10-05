@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Individual Project Milestone 1 - Open Library Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+:root{--green:#4b5e44;--cream:#fcfbf7;--tan:#c8b99a;--card:#fffdf8;--border:#d9ddd4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--green);font-family:Verdana,sans-serif}
+a{color:var(--green);text-decoration:none;position:relative}
+a:hover{text-decoration:underline}
+.page{max-width:1100px;margin:0 auto;padding:35px 20px 70px}
+nav{text-align:center;margin-bottom:28px}
+nav a{margin:0 12px}
+h1,h2{font-family:"Lobster",sans-serif;text-align:center}
+h1{font-size:56px;margin:15px 0 8px}
+h2{font-size:34px;margin:10px 0 28px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.label{font-weight:bold}
+.button{display:inline-block;background:var(--green);color:#fff;padding:10px 16px;border-radius:20px;margin:5px}
+.button:hover{color:#fff;background:#585e44;text-decoration:none}
+.notice{background:#f1eee5;border-radius:12px;padding:15px;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.cover{display:block;width:220px;max-height:330px;object-fit:contain;margin:0 auto 18px;border-radius:8px}
+.meta{display:grid;grid-template-columns:170px 1fr;gap:9px 15px}
+.meta div{padding:5px 0}
+.list{padding-left:20px;line-height:1.7}
+footer{text-align:center;padding:30px 20px 60px;background:var(--tan);color:var(--green)}
+@media(max-width:600px){h1{font-size:42px}.meta{grid-template-columns:1fr}.page{padding:20px 12px 50px}}
+
+.book-card{height:100%;display:flex;flex-direction:column}
+.book-card img{width:150px;height:225px;object-fit:contain;margin:0 auto 15px;border-radius:7px;background:#f1eee5}
+.book-card h3{font-family:"Lobster",sans-serif;font-size:27px;text-align:center;margin:8px 0 12px}
+.book-card p{line-height:1.5}
+</style>
+</head>
+<body>
+<div class="page">
+<nav><a href="../index.html">Home</a><a href="../labs.html">Labs</a><a href="project-milestone-1.html">Milestone 1</a><a href="openlibrary-book.html">Single Book</a></nav>
+<h1>Open Library Search Results</h1><h2>Individual Project Milestone 1</h2>
+<div id="status" class="notice">Loading search results...</div>
+<div id="results" class="grid"></div>
+</div>
+<footer>IT 4403 – Advanced Web and Mobile Applications</footer>
+<script>
+$(document).ready(function(){
+ $.getJSON("openlibrary-search.json").done(function(data){
+   var docs=data.docs||[];
+   $('#status').text('Displaying '+docs.length+' saved results for the search phrase "'+escapeHtml(data.q||'modern web')+'".');
+   $.each(docs,function(index,book){
+     var title=book.title||'Untitled';
+     var authors=(book.author_name||[]).join(', ')||'Not available';
+     var cover=book.cover_i ? '<img src="https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg" alt="Cover of '+escapeHtml(title)+'">' : '<div class="notice">Cover image not available.</div>';
+     var link=book.key ? 'https://openlibrary.org'+book.key : '#';
+     var publisher=(book.publisher||[]).slice(0,3).join(', ')||'Not available';
+     var isbn=(book.isbn||[]).slice(0,3).join(', ')||'Not available';
+     $('#results').append('<article class="card book-card">'+cover+
+       '<h3>'+escapeHtml(title)+'</h3>'+
+       '<p><span class="label">Author(s):</span> '+escapeHtml(authors)+'</p>'+
+       '<p><span class="label">First publication year:</span> '+escapeHtml(String(book.first_publish_year||'Not available'))+'</p>'+
+       '<p><span class="label">Publisher:</span> '+escapeHtml(publisher)+'</p>'+
+       '<p><span class="label">Edition count:</span> '+escapeHtml(String(book.edition_count||'Not available'))+'</p>'+
+       '<p><span class="label">ISBN:</span> '+escapeHtml(isbn)+'</p>'+
+       '<p><span class="label">Language:</span> '+escapeHtml((book.language||[]).join(', ')||'Not available')+'</p>'+
+       '<p><a class="button" href="'+link+'" target="_blank" rel="noopener">Open Library record</a></p></article>');
+   });
+ }).fail(function(){$('#status').text('The search JSON file could not be loaded.');});
+});
+function escapeHtml(value){return $('<div>').text(value).html();}
+</script>
+</body></html>

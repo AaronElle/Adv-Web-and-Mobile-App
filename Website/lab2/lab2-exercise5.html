@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 5 | Lab 2: jQuery</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Lobster&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+<div id="myDropdown" class="dropdown-content">
+<a href="../index.html">Home</a><a href="../exercises.html">Exercises</a><a href="../labs.html">Labs</a><a href="../projects.html">Projects</a>
+</div></div>
+<h1 class="heading">Lab 2: jQuery</h1>
+<div class="lab2-wrap">
+<div class="lab2-nav"><a href="../labs.html">← Back to Labs</a></div>
+<h2>Exercise 5: jQuery Visual Effects</h2>
+
+<div class="lab2-card">
+<div id="effectBox" class="effect-box">jQuery Visual Effects</div>
+<div class="lab2-button-row">
+<button class="lab2-btn" id="hideEffect">Hide</button>
+<button class="lab2-btn" id="showEffect">Show</button>
+<button class="lab2-btn" id="toggleEffect">Toggle</button>
+<button class="lab2-btn" id="fadeEffect">Fade</button>
+<button class="lab2-btn" id="slideEffect">Slide</button>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+ $("#hideEffect").click(function(){ $("#effectBox").hide(); });
+ $("#showEffect").click(function(){ $("#effectBox").show(); });
+ $("#toggleEffect").click(function(){ $("#effectBox").toggle(); });
+ $("#fadeEffect").click(function(){ $("#effectBox").fadeToggle(700); });
+ $("#slideEffect").click(function(){ $("#effectBox").slideToggle(700); });
+});
+</script>
+
+</div>
+<footer><p>This is a student website created for course projects in IT 4403</p><p>IT 4403 – Advanced Web and Mobile Applications</p><a href="https://campus.kennesaw.edu/colleges-departments/ccse/academics/information-technology/">CCSE Department of IT</a></footer>
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    document.querySelectorAll('.dropdown-content').forEach(function(d){d.classList.remove('show');});
+  }
+}
+</script>
+</body></html>

@@ -1,0 +1,618 @@
+Body {
+    background-color: #FCFBF7;
+    color: rgb(75, 94, 68);
+}
+/* Dropdown Button */
+.dropbtn {
+  background-color: rgb(75, 94, 68);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.dropbtn:hover, .dropbtn:focus {
+
+  background-color: rgb(88, 94, 68);
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float: right;
+  padding: 10px 5px 50px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #FCFBF7;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 25px;
+  right: 0;
+}
+.dropdown-content a {
+  color: rgb(75, 94, 68);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.show {display:block;}
+
+@media (max-width: 1179px) {
+    .heading {display: none;}
+    .thing {display: none;}
+    .wedding_list {display: none;}
+    .desktop {display: none;}
+    .gallery_pictures{ display: none;}
+   }
+
+@media (min-width: 1179px) {
+    .dropdown{ display: none;}
+    .wed{ display: none;}
+    .phone{ display: none;}
+    .slideshow-container {display: none;}
+    .dot {display: none;}
+    .circles {display: none;}
+    .spacer {display: none;}
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #C8B99A;
+    color: #4D6049;
+    font-size: 18px;
+    border-top: 1px solid #d9ddd4;
+    padding-bottom: 60px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 70px;
+    font-family: "Lobster", sans-serif;
+}
+h2{
+    text-align: center;
+    font-size: 50px;
+    font-family: "Lobster", sans-serif;
+}
+h3{
+    text-align: center;
+    font-size: 30px;
+    font-family: "Lobster", sans-serif;
+}
+
+
+.thing {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    justify_content: safe center;
+}
+
+.directory{
+    display: inline;
+    margin: 0 12px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(75, 94, 68);
+    position: relative;
+}
+a:hover {
+
+  color: rgb(75, 94, 68);
+}
+a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(75, 94, 68);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+a:hover::before {
+
+  transform: scaleX(1);
+}
+
+
+.puta{
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+.wedding_list{
+    color: rgb(75, 94, 68);
+    width:80%;
+    margin: auto;
+    border-collapse: collapse;
+    font-family: "Baskervville SC", serif;
+}
+
+.member{
+    font-size: 60px;
+    font-family: "Baskervville SC", serif;
+    padding: 20px 0;
+    text-align: center;
+}
+.desc{
+    font-size: 20px;
+    text-align: center;
+}
+
+.kevin{
+    font-size: 60px;
+        font-family: "Baskervville SC", serif;
+        padding: 40px 0;
+        text-align: center;
+}
+.kevin2{
+    font-size: 20px;
+    text-align: center;
+}
+
+.schedule_div1{
+    font-size: 60px;
+    font-family: serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.hearts{
+    max-width: 200px;
+}
+
+.heartsdiv{
+    text-align: center;
+}
+
+.our_wedding{
+    text-align: center;
+    font-size: 30px;
+}
+
+.address{
+    text-align: center;
+    font-size: 20px;
+}
+
+.our_wedding_list{
+    font-size: 30px;
+    display: inline-block;
+    text-align: left;
+    list-style-type: none;
+}
+
+.gallery_pictures{
+    text-align: center;
+
+}
+
+.fence{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+.blanket{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+.horse{
+    width: 678px;
+    height 400px;
+    object-fit: contain;
+}
+
+.horse_2{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+.mountain{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+.piggy_back{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+.proposal{
+    width: 678px;
+    height 400px;
+    object-fit: contain;
+}
+
+.proposal_2{
+    width: 678px;
+    height 400px;
+    object-fit: contain;
+}
+
+.proposal_3{
+    width: 678px;
+    height 400px;
+    object-fit: contain;
+}
+
+.proposal_4{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+.ring{
+    border-radius: 50%;
+    width: 500px;
+    height 200px;
+    object-fit: contain;
+    padding: 50px;
+}
+
+.steps{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+.walking{
+    width: 678px;
+    height 400px;
+    object-fit: contain;
+}
+
+.walking_2{
+    width: 300px;
+    height 400px;
+    object-fit: contain;
+}
+
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 82%;
+  position: relative;
+  margin: auto;
+  padding 50px 50px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+.spacer{
+    width: 90%;
+    height: 1px;
+
+}
+
+
+
+
+
+
+
+
+/* Lab 2: jQuery */
+.lab2-wrap {
+    max-width: 1000px;
+    margin: 30px auto 80px;
+    padding: 0 20px;
+    color: #4b5e44;
+}
+
+.lab2-nav {
+    text-align: center;
+    margin: 20px 0 30px;
+}
+
+.lab2-nav a {
+    margin: 0 8px;
+}
+
+.lab2-card {
+    background: #fffdf8;
+    border: 1px solid #d9ddd4;
+    border-radius: 18px;
+    padding: 25px;
+    margin: 22px 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.lab2-btn {
+    background: #4b5e44;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+    padding: 10px 18px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.lab2-btn:hover {
+    background: #585e44;
+}
+
+.lab2-input,
+.lab2-select {
+    padding: 10px;
+    border: 1px solid #b8c0b3;
+    border-radius: 8px;
+    margin: 5px;
+    max-width: 100%;
+}
+
+.result {
+    padding: 15px;
+    border-radius: 10px;
+    background: #f1eee5;
+    margin-top: 15px;
+    min-height: 25px;
+}
+
+.error {
+    color: #a33;
+    font-weight: bold;
+}
+
+.success {
+    font-weight: bold;
+}
+
+.demo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.demo-table th,
+.demo-table td {
+    border: 1px solid #b8c0b3;
+    padding: 10px;
+    text-align: left;
+}
+
+.demo-table th {
+    background: #4b5e44;
+    color: #fff;
+}
+
+.demo-table tr:nth-child(odd) {
+    background: #f3f0e8;
+}
+
+.effect-box {
+    padding: 35px;
+    text-align: center;
+    background: #c8b99a;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.browser-img {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: 430px;
+    object-fit: cover;
+    margin: 15px auto;
+    border-radius: 14px;
+}
+
+.caption {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.counter {
+    text-align: center;
+}
+
+.codebox {
+    background: #20241f;
+    color: #eee;
+    padding: 15px;
+    border-radius: 10px;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+
+.lab2-button-row {
+    text-align: center;
+}
+
+.lab2-description {
+    text-align: center;
+    font-size: 18px;
+}
+
+.lab2-list {
+    line-height: 2;
+    font-size: 18px;
+}
+
+.lab2-spacer {
+    padding: 50px 0;
+}
+
+.lab2-spacer-image {
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .lab2-wrap {
+        padding: 0 12px;
+    }
+
+    .browser-img {
+        height: 260px;
+    }
+}
+
+
+/* Lab 3: JSON */
+.lab-page {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+}
+
+.lab-page h1 {
+    margin-bottom: 8px;
+}
+
+.lab-page h2 {
+    margin-top: 0;
+    margin-bottom: 28px;
+}
+
+.json-card {
+    padding: 18px;
+    margin: 16px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.json-display, .json-card pre {
+    padding: 18px;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f5f5f5;
+    text-align: left;
+}
+
+.lab-page code {
+     font-family: monospace;
+}
+
+.lab-page .button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.lab-page .error {
+    margin-top: 15px;
+}
+
+.lab-page .success {
+    padding: 12px;
+    border: 1px solid #8bc48b;
+    border-radius: 6px;
+}
+
+.lab3-list {
+    margin-top: 12px;
+}
+
+.lab3-list li {
+    margin-bottom: 8px;
+}
+
+
+
+

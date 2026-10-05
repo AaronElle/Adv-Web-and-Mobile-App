@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 1 | Lab 2: jQuery</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Lobster&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+<div id="myDropdown" class="dropdown-content">
+<a href="../index.html">Home</a><a href="../exercises.html">Exercises</a><a href="../labs.html">Labs</a><a href="../projects.html">Projects</a>
+</div></div>
+<h1 class="heading">Lab 2: jQuery</h1>
+<div class="lab2-wrap">
+<div class="lab2-nav"><a href="../labs.html">← Back to Labs</a></div>
+<h2>Exercise 1: JavaScript and jQuery Comparison</h2>
+
+<div class="lab2-card">
+<p>This page demonstrates the same basic tasks using traditional JavaScript and jQuery. The examples cover calculations, loops, functions, DOM manipulation, click events, and CSS manipulation.</p>
+<h3>1. Calculations and Output</h3>
+<div class="codebox">JavaScript: document.getElementById("calcOutput").textContent = 5 + 7;
+jQuery: $("#calcOutput").text(5 + 7);</div>
+<p id="calcOutput">Result: 12</p>
+<h3>2. Loops</h3>
+<button class="lab2-btn" id="loopBtn">Run Loop</button>
+<p id="loopOutput"></p>
+<h3>3. Functions</h3>
+<button class="lab2-btn" id="functionBtn">Run Function</button>
+<p id="functionOutput"></p>
+<h3>4. DOM Access and Manipulation</h3>
+<p id="domExample">This text is changed with jQuery.</p>
+<button class="lab2-btn" id="domBtn">Change Text</button>
+<h3>5. Click Events</h3>
+<button class="lab2-btn" id="clickBtn">Click Me</button>
+<p id="clickOutput">Waiting for a click...</p>
+<h3>6. CSS Manipulation</h3>
+<button class="lab2-btn" id="cssBtn">Change CSS</button>
+<p id="cssExample">jQuery changes this element's CSS.</p>
+</div>
+<script>
+$(document).ready(function(){
+  $("#loopBtn").click(function(){
+    let output="";
+    for(let i=1;i<=5;i++){ output += i + " "; }
+    $("#loopOutput").text(output);
+  });
+  function greeting(name){ return "Hello, " + name + "!"; }
+  $("#functionBtn").click(function(){ $("#functionOutput").text(greeting("Aaron")); });
+  $("#domBtn").click(function(){ $("#domExample").html("<strong>The DOM content has been changed.</strong>"); });
+  $("#clickBtn").click(function(){ $("#clickOutput").text("The button click event was handled by jQuery."); });
+  $("#cssBtn").click(function(){
+    $("#cssExample").css({"background-color":"#c8b99a","color":"#4b5e44","font-size":"24px","border":"3px solid #4b5e44","padding":"12px"});
+  });
+});
+</script>
+
+</div>
+<footer><p>This is a student website created for course projects in IT 4403</p><p>IT 4403 – Advanced Web and Mobile Applications</p><a href="https://campus.kennesaw.edu/colleges-departments/ccse/academics/information-technology/">CCSE Department of IT</a></footer>
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    document.querySelectorAll('.dropdown-content').forEach(function(d){d.classList.remove('show');});
+  }
+}
+</script>
+</body></html>
