@@ -616,3 +616,23 @@ img {vertical-align: middle;}
 
 
 
+
+
+/* Lab 4: RESTful Web APIs */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+}
+
+.photo-card {
+    margin: 0;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.photo-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}

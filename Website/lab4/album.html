@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4 - Album Photos</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<main class="lab-page">
+    <h1>Lab 4: RESTful Web APIs</h1>
+    <h2>Selected Album</h2>
+    <p><a href="index.html">Back to User and Albums</a> | <a href="../labs.html">Back to Labs</a></p>
+    <div id="album" class="json-card">Loading album information...</div>
+    <h2>Photos</h2>
+    <div id="photos" class="json-card">Loading photos...</div>
+    <p id="message" class="error"></p>
+</main>
+<script>
+const params = new URLSearchParams(window.location.search);
+const albumId = params.get('albumId');
+
+if (!albumId || !/^\d+$/.test(albumId)) {
+    document.getElementById('album').textContent = 'No valid album ID was provided. Return to Page 1 and select an album.';
+    document.getElementById('photos').textContent = '';
+} else {
+    fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}`)
+        .then(response => {
+            if (!response.ok) throw new Error('Could not retrieve this album.');
+            return response.json();
+        })
+        .then(album => {
+            document.getElementById('album').innerHTML = `
+                <h3>${album.title}</h3>
+                <p><strong>Album ID:</strong> ${album.id}</p>
+                <p><strong>User ID:</strong> ${album.userId}</p>`;
+        })
+        .catch(error => document.getElementById('message').textContent = error.message);
+
+    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${encodeURIComponent(albumId)}`)
+        .then(response => {
+            if (!response.ok) throw new Error('Could not retrieve photos for this album.');
+            return response.json();
+        })
+        .then(photos => {
+            const list = document.createElement('div');
+            photos.forEach(photo => {
+                const item = document.createElement('div');
+                item.className = 'json-card photo-card';
+                const title = document.createElement('p');
+                title.textContent = photo.title;
+                const image = document.createElement('img');
+                image.src = photo.thumbnailUrl;
+                image.alt = photo.title;
+                image.loading = 'lazy';
+                image.width = 150;
+                image.height = 150;
+                item.appendChild(title);
+                item.appendChild(image);
+                list.appendChild(item);
+            });
+            const container = document.getElementById('photos');
+            container.textContent = '';
+            container.appendChild(list);
+        })
+        .catch(error => document.getElementById('message').textContent = error.message);
+}
+</script>
+</body>
+</html>
