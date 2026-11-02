@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 6 - AJAX Error Investigation
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    Lab 6: AJAX
+   </h1>
+   <h2>
+    Activity 2: AJAX Error Investigation
+   </h2>
+   <p>
+    The form and link below demonstrate how a default browser action can interrupt an AJAX interaction. The handlers call
+    <code>
+     preventDefault()
+    </code>
+    to stop the page refresh or navigation.
+   </p>
+   <p>
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <div class="json-card">
+    <form id="demoForm">
+     <label for="demoInput">
+      Enter a message:
+     </label>
+     <br/>
+     <input id="demoInput" required="" type="text" value="AJAX test"/>
+     <button class="button" type="submit">
+      Submit with AJAX
+     </button>
+    </form>
+    <p>
+     <a href="updated-content.html" id="demoLink">
+      Load content using this link
+     </a>
+    </p>
+   </div>
+   <h3>
+    AJAX Response
+   </h3>
+   <div class="json-card" id="response">
+    Submit the form or click the link.
+   </div>
+   <p class="error" id="message">
+   </p>
+   <h3>
+    What caused the refresh?
+   </h3>
+   <p>
+    A form submission normally navigates or reloads the page, and a normal link navigates to its URL. Preventing the default event lets JavaScript handle the action instead.
+   </p>
+  </main>
+  <script>
+   $(function () { function loadContent(label) { $('#response').text('Loading...'); $.ajax({ url: 'updated-content.html', method: 'GET', dataType: 'html' }).done(function (data) { $('#response').html('<p>' + label + '</p>' + data); }).fail(function () { $('#response').text('The AJAX request failed.'); }); } $('#demoForm').on('submit', function (event) { event.preventDefault(); loadContent('Form submitted without refreshing the page.'); }); $('#demoLink').on('click', function (event) { event.preventDefault(); loadContent('Link handled without navigating away.'); }); });
+  </script>
+ </body>
+</html>
+

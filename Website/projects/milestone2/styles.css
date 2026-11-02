@@ -1,1 +1,163 @@
-:root{--green:#4b5e44;--cream:#fcfbf7;--tan:#c8b99a;--card:#fffdf8;--border:#d9ddd4;--muted:#626b5c}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:#283324;font:16px/1.55 Arial,sans-serif}a{color:#3d5935}a:hover{text-decoration:none}.shell{max-width:1120px;margin:auto;padding:24px 18px 60px}header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-bottom:2px solid var(--border);padding-bottom:16px;margin-bottom:26px}header .brand{font-size:1.35rem;font-weight:700;color:var(--green)}nav{display:flex;gap:18px}nav a{font-weight:700;text-decoration:none}.intro{margin:20px 0 26px}h1{color:var(--green);font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin:8px 0}h2{color:var(--green)}.panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin:18px 0;box-shadow:0 3px 12px #0000000b}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.controls input[type=search]{flex:1;min-width:220px}input,select,button{font:inherit;padding:10px 12px;border:1px solid #aeb8a8;border-radius:8px}button{background:var(--green);color:white;border-color:var(--green);cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:16px}.book{border:1px solid var(--border);border-radius:12px;padding:14px;background:white;min-width:0}.book img{height:190px;width:100%;object-fit:contain;margin-bottom:8px}.book h3{font-size:1rem;line-height:1.35;margin:5px 0 8px}.book h3 a{text-decoration:none}.book h3 a:hover{text-decoration:underline}.muted{color:var(--muted)}.status{padding:12px;border-radius:8px;background:#f0eee6;margin:14px 0}.error{background:#fff0ed;color:#8c2719}.pagination{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:20px}.details-layout{display:grid;grid-template-columns:minmax(170px,260px) 1fr;gap:26px}.details-cover{width:100%;max-height:420px;object-fit:contain}.subjects{display:flex;gap:8px;flex-wrap:wrap;padding:0;list-style:none}.subjects li{background:#e9eddf;border-radius:18px;padding:5px 10px;font-size:.9rem}.empty-cover{height:190px;display:grid;place-items:center;text-align:center;background:#f0eee6;color:var(--muted);border-radius:8px;padding:12px}.book-title{overflow-wrap:anywhere}footer{text-align:center;color:var(--muted);padding:25px 0}@media(max-width:620px){.details-layout{grid-template-columns:1fr}.details-cover{max-height:300px;width:auto;max-width:100%;display:block;margin:auto}header{align-items:flex-start}}
+:root {
+    --green:#4b5e44;
+    --cream:#fcfbf7;
+    --tan:#c8b99a;
+    --card:#fffdf8;
+    --border:#d9ddd4;
+    --muted:#626b5c}
+    * {
+        box-sizing:border-box}
+        body {
+            margin:0;
+            background:var(--cream);
+            color:#283324;
+            font:16px/1.55 Arial,sans-serif}
+            a {
+                color:#3d5935}
+                a:hover {
+                    text-decoration:none}
+                    .shell {
+                        max-width:1120px;
+                        margin:auto;
+                        padding:24px 18px 60px}
+                        header {
+                            display:flex;
+                            align-items:center;
+                            justify-content:space-between;
+                            gap:18px;
+                            flex-wrap:wrap;
+                            border-bottom:2px solid var(--border);
+                            padding-bottom:16px;
+                            margin-bottom:26px}
+                            header .brand {
+                                font-size:1.35rem;
+                                font-weight:700;
+                                color:var(--green)}
+                                nav {
+                                    display:flex;
+                                    gap:18px}
+                                    nav a {
+                                        font-weight:700;
+                                        text-decoration:none}
+                                        .intro {
+                                            margin:20px 0 26px}
+                                            h1 {
+                                                color:var(--green);
+                                                font-size:clamp(2rem,4vw,3rem);
+                                                line-height:1.15;
+                                                margin:8px 0}
+                                                h2 {
+                                                    color:var(--green)}
+                                                    .panel {
+                                                        background:var(--card);
+                                                        border:1px solid var(--border);
+                                                        border-radius:14px;
+                                                        padding:20px;
+                                                        margin:18px 0;
+                                                        box-shadow:0 3px 12px #0000000b}
+                                                        .controls {
+                                                            display:flex;
+                                                            gap:10px;
+                                                            flex-wrap:wrap;
+                                                            align-items:center}
+                                                            .controls input[type=search] {
+                                                                flex:1;
+                                                                min-width:220px}
+                                                                input,select,button {
+                                                                    font:inherit;
+                                                                    padding:10px 12px;
+                                                                    border:1px solid #aeb8a8;
+                                                                    border-radius:8px}
+                                                                    button {
+                                                                        background:var(--green);
+                                                                        color:white;
+                                                                        border-color:var(--green);
+                                                                        cursor:pointer}
+                                                                        button:disabled {
+                                                                            opacity:.5;
+                                                                            cursor:not-allowed}
+                                                                            .results {
+                                                                                display:grid;
+                                                                                grid-template-columns:repeat(auto-fill,minmax(175px,1fr));
+                                                                                gap:16px}
+                                                                                .book {
+                                                                                    border:1px solid var(--border);
+                                                                                    border-radius:12px;
+                                                                                    padding:14px;
+                                                                                    background:white;
+                                                                                    min-width:0}
+                                                                                    .book img {
+                                                                                        height:190px;
+                                                                                        width:100%;
+                                                                                        object-fit:contain;
+                                                                                        margin-bottom:8px}
+                                                                                        .book h3 {
+                                                                                            font-size:1rem;
+                                                                                            line-height:1.35;
+                                                                                            margin:5px 0 8px}
+                                                                                            .book h3 a {
+                                                                                                text-decoration:none}
+                                                                                                .book h3 a:hover {
+                                                                                                    text-decoration:underline}
+                                                                                                    .muted {
+                                                                                                        color:var(--muted)}
+                                                                                                        .status {
+                                                                                                            padding:12px;
+                                                                                                            border-radius:8px;
+                                                                                                            background:#f0eee6;
+                                                                                                            margin:14px 0}
+                                                                                                            .error {
+                                                                                                                background:#fff0ed;
+                                                                                                                color:#8c2719}
+                                                                                                                .pagination {
+                                                                                                                    display:flex;
+                                                                                                                    gap:12px;
+                                                                                                                    align-items:center;
+                                                                                                                    flex-wrap:wrap;
+                                                                                                                    margin-top:20px}
+                                                                                                                    .details-layout {
+                                                                                                                        display:grid;
+                                                                                                                        grid-template-columns:minmax(170px,260px) 1fr;
+                                                                                                                        gap:26px}
+                                                                                                                        .details-cover {
+                                                                                                                            width:100%;
+                                                                                                                            max-height:420px;
+                                                                                                                            object-fit:contain}
+                                                                                                                            .subjects {
+                                                                                                                                display:flex;
+                                                                                                                                gap:8px;
+                                                                                                                                flex-wrap:wrap;
+                                                                                                                                padding:0;
+                                                                                                                                list-style:none}
+                                                                                                                                .subjects li {
+                                                                                                                                    background:#e9eddf;
+                                                                                                                                    border-radius:18px;
+                                                                                                                                    padding:5px 10px;
+                                                                                                                                    font-size:.9rem}
+                                                                                                                                    .empty-cover {
+                                                                                                                                        height:190px;
+                                                                                                                                        display:grid;
+                                                                                                                                        place-items:center;
+                                                                                                                                        text-align:center;
+                                                                                                                                        background:#f0eee6;
+                                                                                                                                        color:var(--muted);
+                                                                                                                                        border-radius:8px;
+                                                                                                                                        padding:12px}
+                                                                                                                                        .book-title {
+                                                                                                                                            overflow-wrap:anywhere}
+                                                                                                                                            footer {
+                                                                                                                                                text-align:center;
+                                                                                                                                                color:var(--muted);
+                                                                                                                                                padding:25px 0}
+                                                                                                                                                @media(max-width:620px) {
+                                                                                                                                                    .details-layout {
+                                                                                                                                                        grid-template-columns:1fr}
+                                                                                                                                                        .details-cover {
+                                                                                                                                                            max-height:300px;
+                                                                                                                                                            width:auto;
+                                                                                                                                                            max-width:100%;
+                                                                                                                                                            display:block;
+                                                                                                                                                            margin:auto}
+                                                                                                                                                            header {
+                                                                                                                                                                align-items:flex-start}
+                                                                                                                                                            }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 7 - ZIP Code Lookup
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    IT 4403 Lab 7
+   </h1>
+   <h2>
+    Task 2: ZIP Code Lookup Using AJAX and CORS
+   </h2>
+   <p>
+    This page performs the same lookup with fetch(), jQuery $.ajax(), and jQuery $.getJSON().
+   </p>
+   <p>
+    <a href="index.html">
+     Lab 7 Home
+    </a>
+    |
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <label for="zipCode">
+    U.S. ZIP code:
+   </label>
+   <br/>
+   <input id="zipCode" maxlength="5" placeholder="30303" type="text"/>
+   <br/>
+   <button class="button" id="fetchButton">
+    Lookup with fetch()
+   </button>
+   <button class="button" id="ajaxButton">
+    Lookup with $.ajax()
+   </button>
+   <button class="button" id="jsonButton">
+    Lookup with $.getJSON()
+   </button>
+   <div class="json-card" id="zipResults">
+    Location information will appear here.
+   </div>
+   <p class="error" id="zipMessage">
+   </p>
+  </main>
+  <script>
+   function validZip() { const zip = $('#zipCode').val().trim(); if (!/^\d{5}$/.test(zip)) { $('#zipMessage').text('Enter a valid five-digit ZIP code.'); return null; } $('#zipMessage').text(''); $('#zipResults').text('Loading location information...'); return zip; } function showPlaces(data) { const places = data.places || []; $('#zipResults').empty(); if (!places.length) { $('#zipResults').text('No places were returned for this ZIP code.'); return; } $('<h3>').text(data['post code'] + ' — ' + data.country).appendTo('#zipResults'); places.forEach(function (place) { const card = $('<div class="json-card">'); $('<p>').text('Place: ' + place['place name']).appendTo(card); $('<p>').text('State: ' + place.state + ' (' + place['state abbreviation'] + ')').appendTo(card); $('#zipResults').append(card); }); } function showError() { $('#zipResults').text('The ZIP code could not be found or the request failed.'); } $('#fetchButton').on('click', function () { const zip = validZip(); if (!zip) return; fetch('https://api.zippopotam.us/us/' + zip).then(function (r) { if (!r.ok) throw new Error('Lookup failed'); return r.json(); }).then(showPlaces).catch(showError); }); $('#ajaxButton').on('click', function () { const zip = validZip(); if (!zip) return; $.ajax({ url: 'https://api.zippopotam.us/us/' + zip, method: 'GET', dataType: 'json' }).done(showPlaces).fail(showError); }); $('#jsonButton').on('click', function () { const zip = validZip(); if (!zip) return; $.getJSON('https://api.zippopotam.us/us/' + zip).done(showPlaces).fail(showError); });
+  </script>
+ </body>
+</html>
+

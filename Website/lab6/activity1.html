@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 6 - AJAX Basics
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    Lab 6: AJAX
+   </h1>
+   <h2>
+    Activity 1: Modify an Existing AJAX Example
+   </h2>
+   <p>
+    This example uses jQuery
+    <code>
+     $.ajax()
+    </code>
+    to load content into the page without refreshing it.
+   </p>
+   <p>
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <button class="button" id="loadContent">
+    Load Updated Content
+   </button>
+   <h3>
+    AJAX Response
+   </h3>
+   <div class="json-card" id="response">
+    Click the button to load updated content.
+   </div>
+   <p class="error" id="message">
+   </p>
+   <h3>
+    Questions
+   </h3>
+   <ol>
+    <li>
+     <strong>
+      Which method is used?
+     </strong>
+     The example uses jQuery
+     <code>
+      $.ajax()
+     </code>
+     .
+    </li>
+    <li>
+     <strong>
+      What changes?
+     </strong>
+     The content inside the AJAX Response box changes.
+    </li>
+    <li>
+     <strong>
+      Why no full reload?
+     </strong>
+     JavaScript sends the request in the background and updates only the selected page element.
+    </li>
+   </ol>
+  </main>
+  <script>
+   $(function () { $('#loadContent').on('click', function () { $('#response').text('Loading updated content...'); $('#message').text(''); $.ajax({ url: 'updated-content.html', method: 'GET', dataType: 'html', success: function (data) { $('#response').html(data); }, error: function () { $('#response').text('The content could not be loaded. Run this page through a local web server.'); $('#message').text('AJAX request failed.'); } }); }); });
+  </script>
+ </body>
+</html>
+

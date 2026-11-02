@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Open Library Explorer | Milestone 3</title>
+  <link href="styles.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
+ </head>
+ <body>
+  <main class="shell">
+   <header>
+    <a class="brand" href="index.html">Open Library Explorer</a>
+    <nav aria-label="Main navigation">
+     <a href="#searchSection">Search</a>
+     <a href="#collectionSection">Collection</a>
+    </nav>
+   </header>
+
+   <section class="intro">
+    <p class="muted">Individual Project · Milestone 3</p>
+    <h1>Find your next book</h1>
+    <p>Search Open Library, explore book details, and browse a collection of science fiction books without leaving this page.</p>
+   </section>
+
+   <section class="panel" id="searchSection">
+    <h2>Search Books</h2>
+    <form class="controls" id="searchForm">
+     <label class="sr-only" for="query">Search books</label>
+     <input id="query" placeholder="Search by title or keyword" type="search" required/>
+     <button id="searchButton" type="submit">Search</button>
+    </form>
+    <div class="status" id="searchStatus" role="status">Enter a title or keyword to find books.</div>
+    <div class="results" id="results"></div>
+    <div class="pagination" id="pagination" hidden>
+     <button id="previous" type="button">Previous</button>
+     <span class="muted" id="pageInfo">Page 1 of 1</span>
+     <button id="next" type="button">Next</button>
+    </div>
+   </section>
+
+   <section class="panel" id="detailsSection">
+    <h2>Selected Book Details</h2>
+    <div class="status" id="detailsStatus" role="status">Select a book from the search results or collection to view its details.</div>
+    <div id="details"></div>
+   </section>
+
+   <section class="panel" id="collectionSection">
+    <h2>Science Fiction Collection</h2>
+    <p class="muted">A selection of books from the Open Library science fiction subject.</p>
+    <div class="status" id="collectionStatus" role="status">Loading the collection…</div>
+    <div class="results" id="collection"></div>
+   </section>
+
+   <footer>
+    Book data provided by
+    <a href="https://openlibrary.org/" rel="noopener" target="_blank">Open Library</a>.
+   </footer>
+  </main>
+ </body>
+</html>

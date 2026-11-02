@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 4 - RESTful Web APIs</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-<main class="lab-page">
-    <h1>Lab 4: RESTful Web APIs</h1>
-    <h2>Page 1: User and Albums</h2>
-    <p>This page retrieves a user and that user's albums from the live JSONPlaceholder API.</p>
-    <p><a href="../labs.html">Back to Labs</a></p>
-
-    <div id="user" class="json-card">Loading user information...</div>
-    <h2>Albums</h2>
-    <p>Select an album title to view its photos.</p>
-    <div id="albums" class="json-card">Loading albums...</div>
-    <p id="message" class="error"></p>
-</main>
-<script>
-fetch('https://jsonplaceholder.typicode.com/users/1')
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 4 - RESTful Web APIs
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    Lab 4: RESTful Web APIs
+   </h1>
+   <h2>
+    Page 1: User and Albums
+   </h2>
+   <p>
+    This page retrieves a user and that user's albums from the live JSONPlaceholder API.
+   </p>
+   <p>
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <div class="json-card" id="user">
+    Loading user information...
+   </div>
+   <h2>
+    Albums
+   </h2>
+   <p>
+    Select an album title to view its photos.
+   </p>
+   <div class="json-card" id="albums">
+    Loading albums...
+   </div>
+   <p class="error" id="message">
+   </p>
+  </main>
+  <script>
+   fetch('https://jsonplaceholder.typicode.com/users/1')
     .then(response => {
         if (!response.ok) throw new Error('Could not retrieve the user.');
         return response.json();
@@ -57,6 +77,7 @@ fetch('https://jsonplaceholder.typicode.com/albums?userId=1')
         container.appendChild(list);
     })
     .catch(error => document.getElementById('message').textContent = error.message);
-</script>
-</body>
+  </script>
+ </body>
 </html>
+

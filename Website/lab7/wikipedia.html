@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 7 - Wikipedia Suggestions
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    IT 4403 Lab 7
+   </h1>
+   <h2>
+    Task 1: Wikipedia Search Suggestions
+   </h2>
+   <p>
+    Search for Wikipedia article titles using the MediaWiki OpenSearch API.
+   </p>
+   <p>
+    <a href="index.html">
+     Lab 7 Home
+    </a>
+    |
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <label for="wikiSearch">
+    Search term:
+   </label>
+   <br/>
+   <input id="wikiSearch" placeholder="Enter a topic" type="text"/>
+   <button class="button" id="wikiButton">
+    Get Suggestions
+   </button>
+   <div class="json-card" id="wikiResults">
+    Suggestions will appear here.
+   </div>
+   <p class="error" id="wikiMessage">
+   </p>
+  </main>
+  <script>
+   $(function () { $('#wikiButton').on('click', function () { const term = $('#wikiSearch').val().trim(); if (!term) { $('#wikiResults').text(''); $('#wikiMessage').text('Please enter a search term.'); return; } $('#wikiMessage').text(''); $('#wikiResults').text('Loading suggestions...'); $.ajax({ url: 'https://en.wikipedia.org/w/api.php', method: 'GET', dataType: 'json', data: { action: 'opensearch', search: term, limit: 5, format: 'json', origin: '*' } }).done(function (data) { const titles = data[1] || []; const urls = data[3] || []; const list = $('<ul>'); titles.forEach(function (title, index) { $('<li>').append($('<a>').attr('href', urls[index]).attr('target', '_blank').attr('rel', 'noopener').text(title)).appendTo(list); }); $('#wikiResults').empty(); if (!titles.length) $('#wikiResults').text('No matching articles were found.'); else $('#wikiResults').append(list); }).fail(function () { $('#wikiResults').text('Suggestions could not be loaded. Please try again.'); }); }); });
+  </script>
+ </body>
+</html>
+

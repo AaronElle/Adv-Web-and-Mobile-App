@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 7 - Open Library AJAX
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    IT 4403 Lab 7
+   </h1>
+   <h2>
+    Task 3: Open Library Book Search
+   </h2>
+   <p>
+    Search for books and display details returned by the Open Library Search API.
+   </p>
+   <p>
+    <a href="index.html">
+     Lab 7 Home
+    </a>
+    |
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <label for="bookSearch">
+    Title or keyword:
+   </label>
+   <br/>
+   <input id="bookSearch" placeholder="JavaScript" type="text"/>
+   <button class="button" id="bookButton">
+    Search
+   </button>
+   <div class="json-card" id="bookResults">
+    Search results will appear here.
+   </div>
+   <p class="error" id="bookMessage">
+   </p>
+  </main>
+  <script>
+   $(function () { $('#bookButton').on('click', function () { const term = $('#bookSearch').val().trim(); if (!term) { $('#bookResults').empty(); $('#bookMessage').text('Please enter a title or keyword.'); return; } $('#bookMessage').text(''); $('#bookResults').text('Loading books...'); $.ajax({ url: 'https://openlibrary.org/search.json', method: 'GET', dataType: 'json', data: { q: term, limit: 5, fields: 'key,title,author_name,first_publish_year,edition_count' } }).done(function (data) { const books = data.docs || []; $('#bookResults').empty(); if (!books.length) { $('#bookResults').text('No matching books were found.'); return; } const list = $('<ol>'); books.forEach(function (book) { const item = $('<li>'); $('<h3>').text(book.title || 'Title unavailable').appendTo(item); $('<p>').text('Author: ' + ((book.author_name || []).join(', ') || 'Author unavailable')).appendTo(item); $('<p>').text('First published: ' + (book.first_publish_year || 'Year unavailable')).appendTo(item); $('<p>').text('Editions: ' + (book.edition_count ?? 'Edition count unavailable')).appendTo(item); list.append(item); }); $('#bookResults').append(list); }).fail(function () { $('#bookResults').text('Books could not be loaded. Please try again.'); }); }); });
+  </script>
+ </body>
+</html>
+

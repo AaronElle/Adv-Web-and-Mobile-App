@@ -1,11 +1,93 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Book Search | Open Library API</title><link rel="stylesheet" href="styles.css"><script src="https://code.jquery.com/jquery-3.7.1.min.js"></script></head>
-<body><main class="shell"><header><a class="brand" href="index.html">Open Library Explorer</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="bookshelf.html">My Bookshelf</a></nav></header>
-<section class="intro"><p class="muted">Individual Project · Milestone 2</p><h1>Find your next book</h1><p>Search Open Library by title, author, subject, or keyword. Select a book to explore its details.</p></section>
-<section class="panel"><form id="searchForm" class="controls"><label class="sr-only" for="query">Search books</label><input id="query" type="search" placeholder="Try “data analysis” or an author name" required><button type="submit">Search</button><label for="perPage">Results per page</label><select id="perPage"><option value="10">10</option><option value="20">20</option></select></form><div id="status" class="status" role="status">Enter a search term to find books.</div><div id="results" class="results"></div><div id="pagination" class="pagination" hidden><button id="previous" type="button">Previous</button><label for="pageSelect">Page</label><select id="pageSelect"></select><span id="pageInfo" class="muted"></span><button id="next" type="button">Next</button></div></section>
-<footer>Book data provided by <a href="https://openlibrary.org/" target="_blank" rel="noopener">Open Library</a>.</footer></main>
-<script>
-$(function(){let term='',page=1,perPage=10,total=0,request=null;const maxResults=60;
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Book Search | Open Library API
+  </title>
+  <link href="styles.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+ </head>
+ <body>
+  <main class="shell">
+   <header>
+    <a class="brand" href="index.html">
+     Open Library Explorer
+    </a>
+    <nav aria-label="Main navigation">
+     <a aria-current="page" href="index.html">
+      Home
+     </a>
+     <a href="bookshelf.html">
+      My Bookshelf
+     </a>
+    </nav>
+   </header>
+   <section class="intro">
+    <p class="muted">
+     Individual Project · Milestone 2
+    </p>
+    <h1>
+     Find your next book
+    </h1>
+    <p>
+     Search Open Library by title, author, subject, or keyword. Select a book to explore its details.
+    </p>
+   </section>
+   <section class="panel">
+    <form class="controls" id="searchForm">
+     <label class="sr-only" for="query">
+      Search books
+     </label>
+     <input id="query" placeholder="Try “data analysis” or an author name" required="" type="search"/>
+     <button type="submit">
+      Search
+     </button>
+     <label for="perPage">
+      Results per page
+     </label>
+     <select id="perPage">
+      <option value="10">
+       10
+      </option>
+      <option value="20">
+       20
+      </option>
+     </select>
+    </form>
+    <div class="status" id="status" role="status">
+     Enter a search term to find books.
+    </div>
+    <div class="results" id="results">
+    </div>
+    <div class="pagination" hidden="" id="pagination">
+     <button id="previous" type="button">
+      Previous
+     </button>
+     <label for="pageSelect">
+      Page
+     </label>
+     <select id="pageSelect">
+     </select>
+     <span class="muted" id="pageInfo">
+     </span>
+     <button id="next" type="button">
+      Next
+     </button>
+    </div>
+   </section>
+   <footer>
+    Book data provided by
+    <a href="https://openlibrary.org/" rel="noopener" target="_blank">
+     Open Library
+    </a>
+    .
+   </footer>
+  </main>
+  <script>
+   $(function(){let term='',page=1,perPage=10,total=0,request=null;const maxResults=60;
 function status(message,error=false){$('#status').text(message).toggleClass('error',error).show()}
 function coverUrl(id){return id?'https://covers.openlibrary.org/b/id/'+encodeURIComponent(id)+'-S.jpg?default=false':null}
 function renderBooks(docs){const $out=$('#results').empty();if(!docs.length){status('No books found. Try another search term.');return;}docs.forEach(book=>{const title=book.title||'Untitled';const work=(book.key||'').match(/^\/works\/(OL\d+W)$/);const $card=$('<article class="book">');const src=coverUrl(book.cover_i);if(src){const $img=$('<img>').attr({src:src,alt:'Cover of '+title,loading:'lazy'}).on('error',function(){$(this).replaceWith($('<div class="empty-cover">').text('Cover not available'));});$card.append($img);}else{$card.append($('<div class="empty-cover">').text('Cover not available'));}const $h=$('<h3>');if(work){$h.append($('<a>').attr('href','details.html?workId='+encodeURIComponent(work[1])).text(title));}else{$h.text(title);} $card.append($h);if(book.author_name&&book.author_name.length)$card.append($('<p class="muted">').text(book.author_name.slice(0,3).join(', ')));$out.append($card);});}
@@ -13,4 +95,7 @@ function updatePages(){const pages=Math.max(1,Math.min(6,Math.ceil(Math.min(tota
 function search(){if(!term.trim()){status('Enter a search term before searching.',true);return;}if(request&&request.readyState!==4)request.abort();$('#results').empty();status('Loading books…');$('#pagination').prop('hidden',true);request=$.ajax({url:'https://openlibrary.org/search.json',data:{q:term,limit:perPage,page:page},dataType:'json',timeout:15000}).done(data=>{total=Number(data.numFound||data.num_found||0);const docs=Array.isArray(data.docs)?data.docs:[];if(page>6||((page-1)*perPage)>=maxResults){status('This milestone displays up to 60 results.');return;}renderBooks(docs);if(docs.length){status('Showing page '+page+' for “'+term+'”.');updatePages();}}).fail((xhr,kind)=>{if(kind==='abort')return;status('Unable to load search results. Check your connection and try again.',true);});}
 $('#searchForm').on('submit',function(e){e.preventDefault();term=$('#query').val().trim();page=1;perPage=Number($('#perPage').val());search();});$('#perPage').on('change',function(){perPage=Number(this.value);page=1;if(term)search();});$('#pageSelect').on('change',function(){page=Number(this.value);search();});$('#previous').on('click',function(){if(page>1){page--;search();}});$('#next').on('click',function(){if(page<6&&page*perPage<maxResults){page++;search();}});
 });
-</script></body></html>
+  </script>
+ </body>
+</html>
+

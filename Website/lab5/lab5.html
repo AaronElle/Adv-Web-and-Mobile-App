@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 5 - Open Library APIs</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-<main class="lab-page">
-    <h1>Lab 5: Open Library APIs</h1>
-    <h2>Data Analysis Books</h2>
-    <p>This page uses fetch() to retrieve live book data from the Open Library Search API.</p>
-    <p><a href="../labs.html">Back to Labs</a></p>
-    <div id="results" class="json-card">Loading books...</div>
-    <p id="message" class="error"></p>
-</main>
-<script>
-fetch('https://openlibrary.org/search.json?q=data%20analysis&limit=10')
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 5 - Open Library APIs
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    Lab 5: Open Library APIs
+   </h1>
+   <h2>
+    Data Analysis Books
+   </h2>
+   <p>
+    This page uses fetch() to retrieve live book data from the Open Library Search API.
+   </p>
+   <p>
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <div class="json-card" id="results">
+    Loading books...
+   </div>
+   <p class="error" id="message">
+   </p>
+  </main>
+  <script>
+   fetch('https://openlibrary.org/search.json?q=data%20analysis&limit=10')
     .then(response => {
         if (!response.ok) throw new Error('Could not retrieve books from Open Library.');
         return response.json();
@@ -41,6 +56,7 @@ fetch('https://openlibrary.org/search.json?q=data%20analysis&limit=10')
         document.getElementById('results').textContent = 'Books could not be loaded.';
         document.getElementById('message').textContent = error.message;
     });
-</script>
-</body>
+  </script>
+ </body>
 </html>
+

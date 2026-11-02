@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 4 - Album Photos</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-<main class="lab-page">
-    <h1>Lab 4: RESTful Web APIs</h1>
-    <h2>Selected Album</h2>
-    <p><a href="index.html">Back to User and Albums</a> | <a href="../labs.html">Back to Labs</a></p>
-    <div id="album" class="json-card">Loading album information...</div>
-    <h2>Photos</h2>
-    <div id="photos" class="json-card">Loading photos...</div>
-    <p id="message" class="error"></p>
-</main>
-<script>
-const params = new URLSearchParams(window.location.search);
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lab 4 - Album Photos
+  </title>
+  <link href="../styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <main class="lab-page">
+   <h1>
+    Lab 4: RESTful Web APIs
+   </h1>
+   <h2>
+    Selected Album
+   </h2>
+   <p>
+    <a href="index.html">
+     Back to User and Albums
+    </a>
+    |
+    <a href="../labs.html">
+     Back to Labs
+    </a>
+   </p>
+   <div class="json-card" id="album">
+    Loading album information...
+   </div>
+   <h2>
+    Photos
+   </h2>
+   <div class="json-card" id="photos">
+    Loading photos...
+   </div>
+   <p class="error" id="message">
+   </p>
+  </main>
+  <script>
+   const params = new URLSearchParams(window.location.search);
 const albumId = params.get('albumId');
 
 if (!albumId || !/^\d+$/.test(albumId)) {
@@ -65,6 +86,7 @@ if (!albumId || !/^\d+$/.test(albumId)) {
         })
         .catch(error => document.getElementById('message').textContent = error.message);
 }
-</script>
-</body>
+  </script>
+ </body>
 </html>
+

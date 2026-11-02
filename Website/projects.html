@@ -1,77 +1,98 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="styles.css">
+<link href="styles.css" rel="stylesheet"/>
 <html lang="en">
-
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Lobster&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adv Web Dev</title>
-</head>
-<body>
-<div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Menu</button>
-    <div id="myDropdown" class="dropdown-content">
-
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
-
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
-
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
-
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
-
-    </div>
-</div>
-
-
-
-<h1 class="heading">Projects</h1>
-
-<ul class="thing">
-    <div class="directory" >
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/">Home</a>
-    </div>
-
-    <div class="directory">
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">Exercises</a>
-    </div>
-
-    <div class="directory">
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">Labs</a>
-    </div>
-
-    <div class="directory">
-        <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">Projects</a>
-    </div>
-</ul>
-
-<div style="text-align: center;">
-    <img class="spacer" src="spacer.png">
-</div>
-
-<div style="padding:0px;"><h2 class="wed">Exercises</h2></div>
-
-
-<div style="text-align:center; margin-top:40px;">
-    <h2>Individual Project Milestone</h2>
-    <p><a href="projects/project-milestone-1.html">Milestone 1: Open Library JSON</a></p>
-    <p><a href="projects/milestone2/index.html">Milestone 2: Open Library API Book Search</a></p>
-</div>
-<div style="padding: 80px 0"></div>
-
-<div
-        style="
+ <head>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&amp;family=Lobster&amp;display=swap" rel="stylesheet"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Adv Web Dev
+  </title>
+ </head>
+ <body>
+  <div class="dropdown">
+   <button class="dropbtn" onclick="myFunction()">
+    Menu
+   </button>
+   <div class="dropdown-content" id="myDropdown">
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/">
+     Home
+    </a>
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">
+     Exercises
+    </a>
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">
+     Labs
+    </a>
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">
+     Projects
+    </a>
+   </div>
+  </div>
+  <h1 class="heading">
+   Projects
+  </h1>
+  <ul class="thing">
+   <div class="directory">
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/">
+     Home
+    </a>
+   </div>
+   <div class="directory">
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/exercises">
+     Exercises
+    </a>
+   </div>
+   <div class="directory">
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/labs">
+     Labs
+    </a>
+   </div>
+   <div class="directory">
+    <a href="https://adv-web-dev-aaron-elle.netlify.app/projects">
+     Projects
+    </a>
+   </div>
+  </ul>
+  <div style="text-align: center;">
+   <img class="spacer" src="spacer.png"/>
+  </div>
+  <div style="padding:0px;">
+   <h2 class="wed">
+    Exercises
+   </h2>
+  </div>
+  <div style="text-align:center; margin-top:40px;">
+   <h2>
+    Individual Project Milestone
+   </h2>
+   <p>
+    <a href="projects/project-milestone-1.html">
+     Milestone 1: Open Library JSON
+    </a>
+   </p>
+   <p>
+    <a href="projects/milestone2/index.html">
+     Milestone 2: Open Library API Book Search
+    </a>
+    </p>
+   <p>
+    <a href="projects/milestone3/index.html">
+     Milestone 3: Open Library Single Page Application
+    </a>
+   </p>
+  </div>
+  <div style="padding: 80px 0">
+  </div>
+  <div style="
     padding: 50px 0;
-"
->
-</div>
-
-<! button script>
-<script>
-/* When the user clicks on the button,
+">
+  </div>
+  <!-- button script-->
+  <script>
+   /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -90,6 +111,7 @@ window.onclick = function(event) {
     }
   }
 }
-</script>
-</body>
+  </script>
+ </body>
 </html>
+
